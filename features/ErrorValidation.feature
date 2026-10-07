@@ -6,6 +6,6 @@ Feature: Greeting
 
 		 Examples:
           | username    	  | 	password  |
-          | anshikaw@gmail.com | Learning@830$3mK3   |
+          | Yogiswar          | Yogiswar18.@/ |
        
        
