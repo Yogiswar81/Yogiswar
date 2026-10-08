@@ -1,21 +1,21 @@
 class OrangeHRMLoginPage {
   constructor(page) {
     this.page = page;
-    this.usernameInput = page.locator('input[name="username"]');
-    this.passwordInput = page.locator('input[name="password"]');
-    this.loginButton = page.locator('button[type="submit"]');
+    this.username = page.getByRole('textbox', { name: 'Username' });
+    this.password = page.getByRole('textbox', { name: 'Password' });
+    this.loginButton = page.getByRole('button', { name: 'Login' });
   }
 
-  async goToLogin() {
-    await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-    await this.page.waitForLoadState('domcontentloaded');
+  async goTo() {
+    await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login', {
+      waitUntil: 'domcontentloaded',
+    });
   }
 
-  async login(username = 'Admin', password = 'admin123') {
-    await this.usernameInput.fill(username);
-    await this.passwordInput.fill(password);
+  async login(username, password) {
+    await this.username.fill(username);
+    await this.password.fill(password);
     await this.loginButton.click();
-    await this.page.waitForURL(/\/dashboard\/index|\/web\/index\.php\/dashboard\/index/);
   }
 }
 
